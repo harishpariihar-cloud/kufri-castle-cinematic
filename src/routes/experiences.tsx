@@ -1,0 +1,12 @@
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowUpRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { BookingStrip, PageHero, SectionTitle } from "@/components/site-shell";
+import { Reveal } from "@/components/reveal";
+import { pageHead, photos } from "@/lib/hotel";
+export const Route=createFileRoute("/experiences")({head:()=>pageHead("Kufri Experiences | Mahasu Peak & Kufri Fun World","Explore Mahasu Peak, Kufri Fun World, Apple Point Road, Himalayan walks and seasonal snow from Hotel Beercastle Kufri.","/experiences"),component:Experiences});
+const moments=["Himalayan walks","Mountain photography","Nature exploration","Snow experiences in season","Peaceful sunrise and sunset moments"];
+function Experiences(){return <><PageHero image={photos.approach} eyebrow="The landscape beyond" title="Kufri, in every direction." text="Step outside to mountain roads, changing light and the well-known experiences that bring travellers to these hills."/>
+<section className="experience-lead"><Reveal><SectionTitle eyebrow="Nearby highlights" title="Let the mountain set the itinerary."/></Reveal><div className="experience-features"><Reveal className="exp-feature"><span>01</span><h2>Mahasu Peak</h2><p>Beautiful mountain surroundings and one of the key attractions near the property—a defining part of the Kufri landscape.</p></Reveal><Reveal className="exp-feature"><span>02</span><h2>Kufri Fun World</h2><p>The property's location makes it a convenient base for visitors exploring Kufri's popular attractions.</p></Reveal><Reveal className="exp-feature"><span>03</span><h2>Apple Point Road</h2><p>A scenic mountain-road setting that turns even the approach to your stay into part of the experience.</p></Reveal></div></section>
+<section className="experience-image"><img src={photos.exteriorDay} alt="Green mountain surroundings around Hotel Beercastle Kufri"/><blockquote>“The best days here begin with no plan—only a road, the weather, and the hills.”</blockquote></section>
+<section className="moments-section"><Reveal><p className="eyebrow">Small mountain moments</p><h2>Make room for wonder.</h2></Reveal><div>{moments.map((m,i)=><Reveal className="moment" key={m}><span>{String(i+1).padStart(2,"0")}</span><h3>{m}</h3></Reveal>)}</div><Button asChild variant="default" size="xl"><Link to="/location">Find us in Kufri <ArrowUpRight/></Link></Button></section><BookingStrip/></>}
