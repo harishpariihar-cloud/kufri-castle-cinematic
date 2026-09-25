@@ -1,0 +1,13 @@
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowUpRight, Clock, IndianRupee } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { BookingStrip, PageHero, SectionTitle } from "@/components/site-shell";
+import { Reveal } from "@/components/reveal";
+import { pageHead, photos } from "@/lib/hotel";
+
+export const Route=createFileRoute("/rooms")({head:()=>pageHead("Rooms at Hotel Beercastle Kufri | Comfortable Kufri Stay","Explore comfortable rooms at Hotel Beercastle Kufri near Mahasu Peak, with stays starting around ₹1,154 per night depending on season.","/rooms"),component:Rooms});
+const rooms=[{image:photos.roomBlue,title:"Restful rooms for mountain days",text:"Bright, welcoming spaces provide a comfortable place to return to after time spent exploring Kufri."},{image:photos.roomWindow,title:"Comfort with a homestay warmth",text:"Settle into the relaxed character of a mountain property where the focus is on ease, rest and friendly hospitality."},{image:photos.roomCoral,title:"Simple, comfortable stays",text:"Thoughtfully presented rooms for travellers seeking a practical and peaceful stay near Mahasu Peak."}];
+function Rooms(){return <><PageHero image={photos.roomClassic} eyebrow="Rooms · Rest · Retreat" title="Rooms made for slowing down." text="Comfortable private spaces, warm details and a peaceful base in the hills of Kufri."/>
+<section className="rooms-intro"><SectionTitle eyebrow="Stay your way" title="A warm return after a day outside." text="We keep our room descriptions honest and simple. Exact room allocation and availability are confirmed when you enquire."/><div className="price-note"><IndianRupee/><div><strong>Approx. ₹1,154/night</strong><span>Starting price · season dependent</span></div></div></section>
+<section className="room-showcase">{rooms.map((r,i)=><article className="room-row" key={r.title}><Reveal className="room-photo"><img src={r.image} alt={`${r.title} at Hotel Beercastle Kufri`}/><span>0{i+1}</span></Reveal><Reveal className="room-copy"><p className="eyebrow">Hotel + Homestay</p><h2>{r.title}</h2><p>{r.text}</p><div className="confirmed"><span>Comfortable bedding</span><span>Room service available</span><span>Free Wi-Fi</span></div><Button asChild variant="default" size="xl"><Link to="/contact">Enquire about this stay <ArrowUpRight/></Link></Button></Reveal></article>)}</section>
+<section className="arrival-note"><Clock/><div><p className="eyebrow">Good to know</p><h2>Check-in from 12:00 PM<br/>Check-out by 11:00 AM</h2></div></section><BookingStrip/></>}

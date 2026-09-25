@@ -1,0 +1,11 @@
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowUpRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { BookingStrip, PageHero, SectionTitle } from "@/components/site-shell";
+import { Reveal } from "@/components/reveal";
+import { pageHead, photos } from "@/lib/hotel";
+export const Route=createFileRoute("/dining")({head:()=>pageHead("Dining at Hotel Beercastle Kufri | Restaurant & Bar","Enjoy homely food, breakfast options, room service and a bar at Hotel Beercastle Kufri near Mahasu Peak.","/dining"),component:Dining});
+function Dining(){return <><PageHero image={photos.loungeDining} eyebrow="Restaurant · Breakfast · Bar" title="Comfort Food with a Mountain View" text="Warm, uncomplicated dining for slow mornings, satisfying evenings and everything between."/>
+<section className="dining-intro"><Reveal><SectionTitle eyebrow="Gather around" title="Food that feels at home in the hills." text="The on-site restaurant keeps dining convenient and relaxed, with homely food and breakfast options available to guests."/></Reveal><Reveal className="dining-details"><div><span>01</span><h3>Breakfast</h3><p>Paid breakfast options for an easy start before you head out into Kufri.</p></div><div><span>02</span><h3>Room service</h3><p>Enjoy the comfort of dining in your room when you prefer a quiet evening.</p></div><div><span>03</span><h3>Bar</h3><p>A relaxed space to settle in after a day spent exploring the hills.</p></div></Reveal></section>
+<section className="dining-collage"><img src={photos.receptionDining} alt="Hotel Beercastle restaurant and reception area"/><img src={photos.loungeDining} alt="Dining tables beneath a warm timber ceiling"/><div><p className="eyebrow light">At your pace</p><h2>Stay in.<br/>Slow down.</h2></div></section>
+<section className="simple-cta"><h2>Planning a stay?</h2><p>Ask about breakfast and dining when you enquire for your dates.</p><Button asChild variant="default" size="xl"><Link to="/contact">Start an enquiry <ArrowUpRight/></Link></Button></section><BookingStrip/></>}
