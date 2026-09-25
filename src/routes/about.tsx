@@ -1,0 +1,11 @@
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowUpRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { BookingStrip, PageHero, SectionTitle } from "@/components/site-shell";
+import { Reveal } from "@/components/reveal";
+import { pageHead, photos } from "@/lib/hotel";
+export const Route=createFileRoute("/about")({head:()=>pageHead("About Hotel Beercastle Kufri | A Peaceful Hill Stay","Discover Hotel Beercastle Kufri, a hotel and homestay on Apple Point Road near Mahasu Peak for comfortable, affordable mountain stays.","/about"),component:About});
+function About(){return <><PageHero image={photos.exteriorNight} eyebrow="Our place in the hills" title="A Peaceful Stay Above the Hills" text="A hotel with the welcoming character of a homestay, set within Kufri's mountain landscape."/>
+<section className="story-lead"><Reveal><SectionTitle eyebrow="The Beercastle story" title="Close to Kufri. Closer to the calm."/></Reveal><Reveal><p className="drop-copy">Hotel Beercastle Kufri sits on Apple Point Road, near Mahasu Peak, where journeys through the hills slow into quieter moments. It is a welcoming, comfortable and affordable base for travellers who want to experience Kufri without losing the warmth of a homestay.</p></Reveal></section>
+<section className="story-images"><img src={photos.exteriorDay} alt="Hotel Beercastle Kufri and its green hillside setting"/><img src={photos.corridor} alt="Warm wood details inside Hotel Beercastle Kufri"/></section>
+<section className="editorial-split"><Reveal><p className="eyebrow">Made for explorers</p><h2>For days on the mountain and evenings at ease.</h2></Reveal><Reveal><p>Whether Kufri is one stop in a longer Himachal journey or the destination itself, the hotel keeps you close to the area's attractions and the beauty of its surroundings.</p><p>Return to comfortable rooms, on-site dining and a team that values friendly, straightforward hospitality.</p><Button asChild variant="default" size="xl"><Link to="/experiences">Explore Kufri <ArrowUpRight/></Link></Button></Reveal></section><BookingStrip/></>}
